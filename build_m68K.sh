@@ -13,12 +13,12 @@ export PATH="$PREFIX/bin:$PATH"
 
 #latest
 if true ; then
-  VER_BINUTILS=2.31.1
-  VER_GCC=8.2.0
+  VER_BINUTILS=2.33.1
+  VER_GCC=9.2.0
   VER_NEWLIB=3.1.0
   DATE_NEWLIB=".20181231"
   #DATE_NEWLIB=""
-  VER_GDB=8.2.1
+  VER_GDB=8.3.1
   echo "latest available"
 fi
 
@@ -27,39 +27,31 @@ NEWLIB_FILENAME=newlib-${VER_NEWLIB}${DATE_NEWLIB}
 EXTRA_GCC_FLAGS="--disable-nls --disable-shared --disable-threads --disable-libssp"
 NOF_PROC=`nproc`
 MAKE="make -j ${NOF_PROC}"
-#MAKE="make"
+WGET="wget --progress=bar:force"
 
 if [ ! -f binutils-${VER_BINUTILS}.tar.gz ] ; then
   echo "Getting binutils (${VER_BINUTILS})"
-#  wget http://gnu.mirrorcatalogs.com/binutils/binutils-${VER_BINUTILS}.tar.gz
-   wget http://ftp.gnu.org/gnu/binutils/binutils-${VER_BINUTILS}.tar.gz
+   ${WGET} http://ftp.gnu.org/gnu/binutils/binutils-${VER_BINUTILS}.tar.gz
 fi
 
-#if [ ! -f gcc-${VER_GCC}.tar.bz2 ] ; then
 if [ ! -f gcc-${VER_GCC}.tar.gz ] ; then
   echo "Getting gcc (${VER_GCC})"
-
-  #wget http://gnu.mirrorcatalogs.com/gcc/gcc-${VER_GCC}/gcc-${VER_GCC}.tar.bz2
-  #wget http://www.netgull.com/gcc/releases/gcc-${VER_GCC}/gcc-${VER_GCC}.tar.bz2
-  wget ftp://ftp.gnu.org/gnu/gcc/gcc-${VER_GCC}/gcc-${VER_GCC}.tar.gz
+  ${WGET} ftp://ftp.gnu.org/gnu/gcc/gcc-${VER_GCC}/gcc-${VER_GCC}.tar.gz
 fi
 
 if [ ! -f ${NEWLIB_FILENAME}.tar.gz ] ; then
   echo "Getting newlib (${VER_NEWLIB})"
-
-#wget ftp://sources.redhat.com/pub/newlib/newlib-${VER_NEWLIB}.tar.gz
-  wget ftp://sourceware.org/pub/newlib/${NEWLIB_FILENAME}.tar.gz
+  ${WGET} ftp://sourceware.org/pub/newlib/${NEWLIB_FILENAME}.tar.gz
 fi
 
 if [ ! -f ${NEWLIB_FILENAME}.tar.gz ] ; then
   echo "Getting newlib (${VER_NEWLIB})"
-  wget http://downloads.sourceforge.net/project/devkitpro/sources/newlib/${NEWLIB_FILENAME}.tar.gz
+  ${WGET} http://downloads.sourceforge.net/project/devkitpro/sources/newlib/${NEWLIB_FILENAME}.tar.gz
 fi
 
 if [ ! -f gdb-${VER_GDB}.tar.gz ] ; then
   echo "Getting gdb (${VER_GDB})"
-  #wget http://gnu.mirrorcatalogs.com/gdb/gdb-${VER_GDB}.tar.gz
-  wget http://ftp.gnu.org/gnu/gdb/gdb-${VER_GDB}.tar.gz
+  ${WGET} http://ftp.gnu.org/gnu/gdb/gdb-${VER_GDB}.tar.gz
 fi
 
 pause 'downloads done'
