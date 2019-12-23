@@ -8,6 +8,8 @@ default_config_file = "#{current_dir}/default-config.yml"
 yaml_config = YAML.load_file(default_config_file)
 
 VAGRANTFILE_API_VERSION = "2"
+RAM = 4096
+CPUS = 4
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
@@ -32,25 +34,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # bootstrap and 
   # (later) run with ansible
-  config.vm.provision "shell", inline: "sudo dnf -y update"
+  #config.vm.provision "shell", inline: "sudo dnf -y update"
   config.vm.provision "shell", inline: <<-SHELL
 
-  # ubuntu
-  # libgmp-dev libmpfr-dev libmpc-dev texinfo libc6-dev-i386
+  if [ -f /etc/os-release ]; then
+    # freedesktop.org and systemd
+    . /etc/os-release
+    OSID=$ID
+  fi
 
-  # fedora
-  dnf install -y gmp-devel mpfr-devel libmpc-devel texinfo glibc-devel.i686
-  dnf install -y dos2unix wget make gcc-c++ cmake
-
+  echo $OSID
   SHELL
  
   config.vm.provision :shell, :privileged => false, inline: 'mkdir -p devel'
+  config.vm.provision :shell, :privileged => true, :path => "install_gcc_build_dependencies.sh"
   config.vm.provision :shell, :privileged => false, :path => "build_m68k.sh"
   config.vm.provision :shell, :privileged => false, :path => "cleanup_build.sh"
-  config.vm.synced_folder "./.dev", "/home/vagrant/devel",type:"virtualbox", :mount_options => ["rw"]
+  config.vm.synced_folder "./.dev", "/home/vagrant/devel", type:"virtualbox", :mount_options => ["rw"]
 
   $script = <<-SCRIPT
     echo 'export PATH=$HOME/x-tools/m68k-elf/bin:$PATH' >> ~/.bashrc
+    echo 'export CC=/home/vagrant/x-tools/m68k-elf/bin/m68k-elf-gcc' >> ~/.bashrc
+    echo 'export CXX=/home/vagrant/x-tools/m68k-elf/bin/m68k-elf-g++' >> ~/.bashrc
   SCRIPT
 
   config.vm.provision :shell, inline: $script, privileged: false
@@ -60,10 +65,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #end
 
   config.vm.provider "virtualbox" do |v|
-    v.name = "m68k"
-    v.gui = true
-    v.memory = 1024
-    v.cpus = 4
+    v.name = "m68k-cross-compiler"
+    v.gui = false
+    #v.memory = RAM
+    #v.cpus = CPUS
+    v.customize ['modifyvm', :id, '--memory', RAM]
+    v.customize ['modifyvm', :id, '--cpus', CPUS]
   end
 
 end
