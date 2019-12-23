@@ -1,0 +1,4 @@
+
+vm_box: "fedora/31-cloud-base"
+vm_box_version: "31.20191023.0"
+vagrant_vbguest_enabled: true
