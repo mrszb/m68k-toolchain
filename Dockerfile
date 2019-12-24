@@ -29,6 +29,7 @@ COPY ./entry-point.sh .
 # ENV DEBIAN_FRONTEND teletype
 ENV CC=/home/x-tools/m68k-elf/bin/m68k-elf-gcc
 ENV CXX=/home/x-tools/m68k-elf/bin/m68k-elf-g++
+ENV PATH=/home/x-tools/m68k-elf/bin/:$PATH
 
 #ENTRYPOINT ["/bin/bash", "/entry-point.sh"]
 #ENTRYPOINT ["/bin/bash" ]
