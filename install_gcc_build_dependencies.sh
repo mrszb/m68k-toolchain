@@ -9,8 +9,8 @@
   #https://wiki.osdev.org/Preparing_GCC_Build
   
   case $OSID in
-    ubuntu*)
-      apt-get install -y build_esential
+    ubuntu* | debian*)
+      apt-get install -y build-essential
       apt-get install -y bison flex
       apt-get install -y dos2unix 
 

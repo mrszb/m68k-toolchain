@@ -13,12 +13,12 @@ export PATH="$PREFIX/bin:$PATH"
 
 #latest
 if true ; then
-  VER_BINUTILS=2.33.1
-  VER_GCC=9.2.0
-  VER_NEWLIB=3.1.0
-  DATE_NEWLIB=".20181231"
-  #DATE_NEWLIB=""
-  VER_GDB=8.3.1
+  VER_BINUTILS=2.34
+  VER_GCC=10.1.0
+  VER_NEWLIB=3.3.0
+  #DATE_NEWLIB=".20181231"
+  DATE_NEWLIB=""
+  VER_GDB=9.2
   echo "latest available"
 fi
 
