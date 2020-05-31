@@ -14,8 +14,8 @@ CPUS = 4
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = yaml_config['vm_box']
-  #config.vm.box = "fedora/31-cloud-base"
-  config.vm.box_version = "31.20191023.0"
+  config.vm.box = "fedora/32-cloud-base"
+  config.vm.box_version = "32.20200422.0"
 
   # This is an optional plugin that, if installed, updates the host's /etc/hosts
   # file with the hostname of the guest VM. In Fedora it is packaged as
@@ -48,9 +48,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
  
   config.vm.provision :shell, :privileged => false, inline: 'mkdir -p devel'
   config.vm.provision :shell, :privileged => true, :path => "install_gcc_build_dependencies.sh"
-  config.vm.provision :shell, :privileged => false, :path => "build_m68k.sh"
+  config.vm.provision :shell, :privileged => true, :path => "build_xtools.sh"
   config.vm.provision :shell, :privileged => false, :path => "cleanup_build.sh"
-  config.vm.synced_folder "./.dev", "/home/vagrant/devel", type:"virtualbox", :mount_options => ["rw"]
+  #config.vm.synced_folder "./.dev", "/home/vagrant/devel", type:"virtualbox", :mount_options => ["rw"]
 
   $script = <<-SCRIPT
     echo 'export PATH=$HOME/x-tools/m68k-elf/bin:$PATH' >> ~/.bashrc

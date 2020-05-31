@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # see http://www.ifp.illinois.edu/~nakazato/tips/xgcc.html
 
 function pause(){
@@ -6,21 +6,11 @@ echo "pause $*"
 #read -p "$*"
 }
 
-export TARGET=m68k-elf
-#export PREFIX=/home/${USER}/.local
-export PREFIX=/home/${USER}/x-tools/${TARGET}
-export PATH="$PREFIX/bin:$PATH"
-
-#latest
-if true ; then
-  VER_BINUTILS=2.34
-  VER_GCC=10.1.0
-  VER_NEWLIB=3.3.0
-  #DATE_NEWLIB=".20181231"
-  DATE_NEWLIB=""
-  VER_GDB=9.2
-  echo "latest available"
-fi
+echo target $TARGET
+echo binutils $VER_BINUTILS
+echo gcc $VER_GCC
+echo newlib $VER_NEWLIB $DATE_NEWLIB
+echo gdb $VER_GDB
 
 NEWLIB_FILENAME=newlib-${VER_NEWLIB}${DATE_NEWLIB}
 
@@ -83,13 +73,13 @@ tar ${tarflags} gcc-${VER_GCC}.tar.gz -C src
 
 cd build/gcc
 export PATH=$PATH:$PREFIX/bin
-../../src/gcc-${VER_GCC}/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib --with-gnu-as --with-gnu-ld 2>&1 | tee ../gcc-configure.log && echo "All good!" || echo "Something's awry"
-${MAKE} all-gcc  2>&1 | tee ../gcc-make-all.log
-${MAKE} install-gcc | tee ../gcc-make-install.log
+../../src/gcc-${VER_GCC}/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib --with-gnu-as --with-gnu-ld 2>&1 | tee ../bootstrap-configure.log && echo "All good!" || echo "Something's awry"
+${MAKE} all-gcc  2>&1 | tee ../bootstrap-make-all-gcc.log
+${MAKE} install-gcc | tee ../bootstrap-make-install-gcc.log
 pause 'bootstrap gcc done'
 
-${MAKE} all-target-libgcc  2>&1 | tee ../gcc-make-all-target-libgcc.log
-${MAKE} install-target-libgcc | tee ../gcc-make-install-target-libgcc.log
+${MAKE} all-target-libgcc  2>&1 | tee ../bootstrap-make-all-target-libgcc.log
+${MAKE} install-target-libgcc | tee ../bootstrap-make-install-target-libgcc.log
 pause 'libgcc done'
 
 cd ../..
@@ -107,17 +97,14 @@ pause 'newlib done'
 
 #tar jxvf gcc-${VER_GCC}.tar.bz2 -C src
 cd build/gcc-full
-../../src/gcc-${VER_GCC}/configure --target=$TARGET --prefix=$PREFIX $EXTRA_GCC_FLAGS --enable-languages=c,c++ --with-newlib --with-newlib --with-gnu-as 2>&1 | tee ../gcc-full-configure.log && echo "All good!" || echo "Something's awry"
+../../src/gcc-${VER_GCC}/configure --target=$TARGET --prefix=$PREFIX $EXTRA_GCC_FLAGS --enable-languages=c,c++ --with-newlib --with-gnu-as --with-gnu-ld 2>&1 | tee ../gcc-configure.log && echo "All good!" || echo "Something's awry"
 
-#${MAKE} all  2>&1 | tee ../gcc-full-make-all.log
-#${MAKE} install  | tee ../gcc-full-make-install.log
-
-${MAKE} all-gcc  2>&1 | tee ../gcc-full-make-all.log
-${MAKE} install-gcc  | tee ../gcc-full-make-install.log
+${MAKE} all-gcc  2>&1 | tee ../gcc-make-all.log
+${MAKE} install-gcc  | tee ../gcc-make-install.log
 pause 'gcc done'
 
-${MAKE} all-target-libstdc++-v3 2>&1 | tee ../gcc-full-make-all-target-libstdc++-v3.log
-${MAKE} install-target-libstdc++-v3 | tee ../ gcc-full-make-install-target-libstdc++-v3.log
+${MAKE} all-target-libstdc++-v3 2>&1 | tee ../gcc-make-all-target-libstdc++-v3.log
+${MAKE} install-target-libstdc++-v3 | tee ../gcc-make-install-target-libstdc++-v3.log
 pause 'libstdc++-v3 done'
 
 cd ../..
