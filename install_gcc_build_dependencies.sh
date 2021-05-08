@@ -17,7 +17,7 @@
       apt-get -y install libgmp-dev libmpfr-dev libmpc-dev texinfo libc6-dev-i386
 
       # optional libraries
-      apt-get -y install libcloog-isl-dev libisl-dev
+      apt-get -y install libisl-dev
       ;;
 
     fedora*)
