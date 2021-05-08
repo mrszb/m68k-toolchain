@@ -9,12 +9,15 @@
   #https://wiki.osdev.org/Preparing_GCC_Build
   
   case $OSID in
-    ubuntu* | debian*)
+    ubuntu* | debian* | raspbian)
       apt-get install -y build-essential
       apt-get install -y bison flex
       apt-get install -y dos2unix 
 
-      apt-get -y install libgmp-dev libmpfr-dev libmpc-dev texinfo libc6-dev-i386
+      apt-get -y install libgmp-dev libmpfr-dev libmpc-dev texinfo 
+      
+      #not on raspbian (optional ?)
+      apt-get -y install libc6-dev-i386
 
       # optional libraries
       apt-get -y install libisl-dev
