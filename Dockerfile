@@ -6,19 +6,21 @@ RUN apt-get update \
 	&& apt-get -y install libgmp-dev libmpfr-dev libmpc-dev texinfo libc6-dev-i386
 RUN apt-get update && apt-get install -y dos2unix
 
-COPY ./build_m68K.sh /build_m68K.sh
+COPY ./build_xtools.sh /build_xtools.sh
+COPY ./build_cross.sh /build_cross.sh
 COPY ./cleanup_build.sh /cleanup_build.sh
 
 WORKDIR /
 
 # Clean up APT when done.
-RUN dos2unix build_m68K.sh \
+RUN dos2unix build_xtools.sh \
+	&& dos2unix build_cross.sh \
 	&& dos2unix cleanup_build.sh \
 	&& apt-get --purge remove -y dos2unix \
 	&& apt-get clean  \
 	&& rm -rf /var/lib/apt/lists/*
 
-RUN bash ./build_m68K.sh && bash ./cleanup_build.sh
+RUN bash ./build_xtools.sh && bash ./cleanup_build.sh
 
 # CMD bash
 # ENV DEBIAN_FRONTEND noninteractive
