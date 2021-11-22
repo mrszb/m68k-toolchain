@@ -1,4 +1,4 @@
-FROM gcc:9.2
+FROM gcc:11.2
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \

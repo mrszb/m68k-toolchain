@@ -38,6 +38,15 @@ build
 
 `docker build -t m68kcross .`
 
+`docker buildx build -t m68kcross:11.2 . --load --builder "$(docker buildx create --driver-opt env.BUILDKIT_STEP_LOG_MAX_SIZE=100000000 --driver-opt env.BUILDKIT_STEP_LOG_MAX_SPEED=10000000)"`
+
+push
+`docker image push mrszb/m68kcross:VER m68kcross:11.2`
+
+`docker tag HASH mrszb/m68kcross:VER`
+
+`docker push mrszb/m68kcross:VER`
+
 run
 `docker run -i -t m68kcross`
 
