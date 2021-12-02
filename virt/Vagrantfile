@@ -1,8 +1,8 @@
-require 'win32ole'
+#require 'win32ole'
 require 'yaml'
 
-file_system = WIN32OLE.new("Scripting.FileSystemObject")
-drives      = file_system.Drives
+# file_system = WIN32OLE.new("Scripting.FileSystemObject")
+# drives      = file_system.Drives
 current_dir = File.dirname(File.expand_path(__FILE__))
 default_config_file = "#{current_dir}/default-config.yml"
 yaml_config = YAML.load_file(default_config_file)
@@ -14,8 +14,8 @@ CPUS = 4
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = yaml_config['vm_box']
-  config.vm.box = "fedora/32-cloud-base"
-  config.vm.box_version = "32.20200422.0"
+  config.vm.box = "fedora/35-cloud-base"
+  #config.vm.box_version = "32.20200422.0"
 
   # This is an optional plugin that, if installed, updates the host's /etc/hosts
   # file with the hostname of the guest VM. In Fedora it is packaged as

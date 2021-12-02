@@ -5,3 +5,5 @@
 build/
 src/
 *.tar.gz
+
+.cross*/
