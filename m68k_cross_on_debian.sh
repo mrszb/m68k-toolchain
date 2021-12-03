@@ -25,7 +25,7 @@ prepare()
     declare -a arr=("autoconf" 
                 "automake" "libncurses-dev"
                 "python-devel"
-                "libstdc++"
+     #           "libstdc++"
                 )
 
     for i in "${arr[@]}"
@@ -49,7 +49,7 @@ prepare()
     need_package xz-utils
     need_package patch
     need_package gawk
-    need_package ncurses
+    #need_package ncurses
 }
 
 build_crosstool()
