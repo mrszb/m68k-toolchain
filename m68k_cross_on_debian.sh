@@ -22,7 +22,17 @@ prepare()
     # needed
     # INFO  :: Master packages: android-ndk autoconf automake avr-libc binutils bison cloog dtc duma elf2flt expat gcc gdb gettext glibc glibc-ports gmp gnuprumcu isl libelf libiconv libtool linux ltrace m4 make mingw-w64 moxiebox mpc mpfr musl ncurses newlib-nano newlib picolibc strace uClibc zlib
 
-    need_package autoconf
+    declare -a arr=("autoconf" 
+                "automake" "libncurses-dev"
+                "python-devel"
+                "libstdc++"
+                )
+
+    for i in "${arr[@]}"
+    do
+        need_package $i
+    done
+
     need_package help2man
     need_package libtool-bin
     #need_package libtool
@@ -34,6 +44,12 @@ prepare()
     need_package texinfo
     need_package flex
     need_package unzip
+    need_package bzip2
+    need_package make
+    need_package xz-utils
+    need_package patch
+    need_package gawk
+    need_package ncurses
 }
 
 build_crosstool()
