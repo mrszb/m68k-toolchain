@@ -76,6 +76,8 @@ build_cross()
     cp ct-ng-m68k-config.txt ${CROSSCHAIN_BUILD_DIR}/.config
     cd ${CROSSCHAIN_BUILD_DIR}
 
+    ${CROSSTOOL_DIR}/bin/ct-ng upgradeconfig
+
     if [[ "$CONFIGURE" =~ ^([yY][eE][sS]|[yY])$ ]]
     then
         ${CROSSTOOL_DIR}/bin/ct-ng help

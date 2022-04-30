@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# crosstool-NG 1.24.0.498_5075e1f Configuration
+# crosstool-NG 1.25.0_rc2 Configuration
 #
 CT_CONFIGURE_has_static_link=y
 CT_CONFIGURE_has_cxx11=y
@@ -24,11 +24,11 @@ CT_CONFIGURE_has_sha1sum=y
 CT_CONFIGURE_has_sha256sum=y
 CT_CONFIGURE_has_sha512sum=y
 CT_CONFIGURE_has_install_with_strip_program=y
-CT_VERSION="1.24.0.498_5075e1f"
+CT_VERSION="1.25.0_rc2"
 CT_VCHECK=""
-CT_CONFIG_VERSION_ENV="3"
-CT_CONFIG_VERSION_CURRENT="3"
-CT_CONFIG_VERSION="3"
+CT_CONFIG_VERSION_ENV="4"
+CT_CONFIG_VERSION_CURRENT="4"
+CT_CONFIG_VERSION="4"
 CT_MODULES=y
 
 #
@@ -155,7 +155,8 @@ CT_ARCH_SUFFIX=""
 #
 # Generic target options
 #
-CT_MULTILIB=y
+# CT_MULTILIB is not set
+CT_DEMULTILIB=y
 CT_ARCH_SUPPORTS_FLAT_FORMAT=y
 CT_ARCH_DEFAULT_BE=y
 CT_ARCH_SUPPORTS_32=y
@@ -256,7 +257,8 @@ CT_BINUTILS_PKG_NAME="binutils"
 CT_BINUTILS_SRC_RELEASE=y
 # CT_BINUTILS_SRC_DEVEL is not set
 CT_BINUTILS_PATCH_ORDER="global"
-CT_BINUTILS_V_2_37=y
+CT_BINUTILS_V_2_38=y
+# CT_BINUTILS_V_2_37 is not set
 # CT_BINUTILS_V_2_36 is not set
 # CT_BINUTILS_V_2_35 is not set
 # CT_BINUTILS_V_2_34 is not set
@@ -268,7 +270,7 @@ CT_BINUTILS_V_2_37=y
 # CT_BINUTILS_V_2_28 is not set
 # CT_BINUTILS_V_2_27 is not set
 # CT_BINUTILS_V_2_26 is not set
-CT_BINUTILS_VERSION="2.37"
+CT_BINUTILS_VERSION="2.38"
 CT_BINUTILS_MIRRORS="$(CT_Mirrors GNU binutils) $(CT_Mirrors sourceware binutils/releases)"
 CT_BINUTILS_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_BINUTILS_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
@@ -289,6 +291,7 @@ CT_BINUTILS_LINKER_LD=y
 CT_BINUTILS_LINKERS_LIST="ld"
 CT_BINUTILS_LINKER_DEFAULT="bfd"
 CT_BINUTILS_RELRO=m
+CT_BINUTILS_DETERMINISTIC_ARCHIVES=y
 CT_BINUTILS_EXTRA_CONFIG_ARRAY=""
 
 #
@@ -345,15 +348,6 @@ CT_NEWLIB_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_NEWLIB_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
 CT_NEWLIB_ARCHIVE_FORMATS=".tar.gz"
 CT_NEWLIB_SIGNATURE_FORMAT=""
-CT_NEWLIB_later_than_2_2=y
-CT_NEWLIB_2_2_or_later=y
-CT_NEWLIB_later_than_2_1=y
-CT_NEWLIB_2_1_or_later=y
-CT_NEWLIB_later_than_2_0=y
-CT_NEWLIB_2_0_or_later=y
-CT_NEWLIB_CXA_ATEXIT=y
-CT_NEWLIB_HAS_NANO_MALLOC=y
-CT_NEWLIB_HAS_NANO_FORMATTED_IO=y
 CT_LIBC_NEWLIB_TARGET_CFLAGS=""
 # CT_LIBC_NEWLIB_IO_C99FMT is not set
 # CT_LIBC_NEWLIB_IO_LL is not set
@@ -376,7 +370,7 @@ CT_LIBC_NEWLIB_ENABLE_TARGET_OPTSPACE=y
 # CT_LIBC_NEWLIB_NANO_MALLOC is not set
 # CT_LIBC_NEWLIB_NANO_FORMATTED_IO is not set
 CT_LIBC_NEWLIB_EXTRA_CONFIG_ARRAY=""
-CT_ALL_LIBC_CHOICES="AVR_LIBC BIONIC GLIBC MINGW_W64 MOXIEBOX MUSL NEWLIB NONE UCLIBC"
+CT_ALL_LIBC_CHOICES="AVR_LIBC BIONIC GLIBC MINGW_W64 MOXIEBOX MUSL NEWLIB NONE UCLIBC_NG"
 CT_LIBC_SUPPORT_THREADS_NONE=y
 CT_LIBC_PROVIDES_CXA_ATEXIT=y
 
@@ -389,7 +383,7 @@ CT_THREADS_NONE=y
 #
 # C compiler
 #
-CT_CC_CORE_PASS_2_NEEDED=y
+CT_CC_CORE_NEEDED=y
 CT_CC_SUPPORT_CXX=y
 CT_CC_SUPPORT_FORTRAN=y
 CT_CC_SUPPORT_ADA=y
@@ -407,7 +401,6 @@ CT_CC_GCC_SHOW=y
 CT_CC_GCC_PKG_KSYM="GCC"
 CT_GCC_DIR_NAME="gcc"
 CT_GCC_USE_GNU=y
-# CT_GCC_USE_ORACLE is not set
 CT_GCC_USE="GCC"
 CT_GCC_PKG_NAME="gcc"
 CT_GCC_SRC_RELEASE=y
@@ -443,13 +436,10 @@ CT_GCC_later_than_5=y
 CT_GCC_5_or_later=y
 CT_GCC_later_than_4_9=y
 CT_GCC_4_9_or_later=y
-CT_GCC_later_than_4_8=y
-CT_GCC_4_8_or_later=y
 CT_CC_GCC_HAS_LIBMPX=y
 CT_CC_GCC_ENABLE_CXX_FLAGS=""
 CT_CC_GCC_CORE_EXTRA_CONFIG_ARRAY=""
 CT_CC_GCC_EXTRA_CONFIG_ARRAY=""
-CT_CC_GCC_MULTILIB_LIST=""
 CT_CC_GCC_STATIC_LIBSTDCXX=y
 # CT_CC_GCC_SYSTEM_ZLIB is not set
 CT_CC_GCC_CONFIG_TLS=m
@@ -490,7 +480,7 @@ CT_ALL_CC_CHOICES="GCC"
 #
 # Additional supported languages:
 #
-CT_CC_LANG_CXX=y
+# CT_CC_LANG_CXX is not set
 # CT_CC_LANG_FORTRAN is not set
 # end of C compiler
 
@@ -504,20 +494,20 @@ CT_GDB_PKG_NAME="gdb"
 CT_GDB_SRC_RELEASE=y
 # CT_GDB_SRC_DEVEL is not set
 CT_GDB_PATCH_ORDER="global"
-CT_GDB_V_11_1=y
-# CT_GDB_V_10_2 is not set
-# CT_GDB_V_9_2 is not set
+CT_GDB_V_11=y
+# CT_GDB_V_10 is not set
+# CT_GDB_V_9 is not set
 # CT_GDB_V_8_3 is not set
-CT_GDB_VERSION="11.1"
+CT_GDB_VERSION="11.2"
 CT_GDB_MIRRORS="$(CT_Mirrors GNU gdb) $(CT_Mirrors sourceware gdb/releases)"
 CT_GDB_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_GDB_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
 CT_GDB_ARCHIVE_FORMATS=".tar.xz .tar.gz"
 CT_GDB_SIGNATURE_FORMAT=""
-CT_GDB_11_1_or_later=y
-CT_GDB_11_1_or_older=y
-CT_GDB_later_than_10_2=y
-CT_GDB_10_2_or_later=y
+CT_GDB_later_than_11=y
+CT_GDB_11_or_later=y
+CT_GDB_later_than_10=y
+CT_GDB_10_or_later=y
 CT_GDB_later_than_8_3=y
 CT_GDB_8_3_or_later=y
 CT_GDB_later_than_8_0=y
@@ -579,11 +569,6 @@ CT_GMP_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_GMP_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
 CT_GMP_ARCHIVE_FORMATS=".tar.xz .tar.lz .tar.bz2"
 CT_GMP_SIGNATURE_FORMAT="packed/.sig"
-CT_GMP_later_than_5_1_0=y
-CT_GMP_5_1_0_or_later=y
-CT_GMP_later_than_5_0_0=y
-CT_GMP_5_0_0_or_later=y
-CT_GMP_REQUIRE_5_0_0_or_later=y
 # CT_COMP_LIBS_ISL is not set
 # CT_COMP_LIBS_LIBELF is not set
 # CT_COMP_LIBS_LIBICONV is not set
@@ -597,7 +582,7 @@ CT_MPC_PATCH_ORDER="global"
 CT_MPC_V_1_2=y
 # CT_MPC_V_1_1 is not set
 # CT_MPC_V_1_0 is not set
-CT_MPC_VERSION="1.2.0"
+CT_MPC_VERSION="1.2.1"
 CT_MPC_MIRRORS="http://www.multiprecision.org/downloads $(CT_Mirrors GNU mpc)"
 CT_MPC_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_MPC_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
@@ -623,9 +608,6 @@ CT_MPFR_ARCHIVE_FORMATS=".tar.xz .tar.bz2 .tar.gz .zip"
 CT_MPFR_SIGNATURE_FORMAT="packed/.asc"
 CT_MPFR_later_than_4_0_0=y
 CT_MPFR_4_0_0_or_later=y
-CT_MPFR_later_than_3_0_0=y
-CT_MPFR_3_0_0_or_later=y
-CT_MPFR_REQUIRE_3_0_0_or_later=y
 CT_COMP_LIBS_NCURSES=y
 CT_COMP_LIBS_NCURSES_PKG_KSYM="NCURSES"
 CT_NCURSES_DIR_NAME="ncurses"
@@ -657,8 +639,8 @@ CT_ZLIB_PKG_NAME="zlib"
 CT_ZLIB_SRC_RELEASE=y
 # CT_ZLIB_SRC_DEVEL is not set
 CT_ZLIB_PATCH_ORDER="global"
-CT_ZLIB_V_1_2_11=y
-CT_ZLIB_VERSION="1.2.11"
+CT_ZLIB_V_1_2_12=y
+CT_ZLIB_VERSION="1.2.12"
 CT_ZLIB_MIRRORS="http://downloads.sourceforge.net/project/libpng/zlib/${CT_ZLIB_VERSION} https://www.zlib.net/"
 CT_ZLIB_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_ZLIB_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
