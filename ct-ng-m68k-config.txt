@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# crosstool-NG 1.25.0_rc2 Configuration
+# crosstool-NG 1.25.0.79_c803bb7 Configuration
 #
 CT_CONFIGURE_has_static_link=y
 CT_CONFIGURE_has_cxx11=y
@@ -15,16 +15,15 @@ CT_CONFIGURE_has_autoconf_2_65_or_newer=y
 CT_CONFIGURE_has_autoreconf_2_65_or_newer=y
 CT_CONFIGURE_has_automake_1_15_or_newer=y
 CT_CONFIGURE_has_gnu_m4_1_4_12_or_newer=y
-CT_CONFIGURE_has_python_3_4_or_newer=y
 CT_CONFIGURE_has_bison_2_7_or_newer=y
-CT_CONFIGURE_has_python=y
+CT_CONFIGURE_has_bison_3_0_4_or_newer=y
 CT_CONFIGURE_has_git=y
 CT_CONFIGURE_has_md5sum=y
 CT_CONFIGURE_has_sha1sum=y
 CT_CONFIGURE_has_sha256sum=y
 CT_CONFIGURE_has_sha512sum=y
 CT_CONFIGURE_has_install_with_strip_program=y
-CT_VERSION="1.25.0_rc2"
+CT_VERSION="1.25.0.79_c803bb7"
 CT_VCHECK=""
 CT_CONFIG_VERSION_ENV="4"
 CT_CONFIG_VERSION_CURRENT="4"
@@ -148,7 +147,7 @@ CT_ARCH_M68K_SHOW=y
 # Options for m68k
 #
 CT_ARCH_M68K_PKG_KSYM=""
-CT_ALL_ARCH_CHOICES="ALPHA ARC ARM AVR C6X M68K MICROBLAZE MIPS MOXIE MSP430 NIOS2 POWERPC PRU RISCV S390 SH SPARC X86 XTENSA"
+CT_ALL_ARCH_CHOICES="ALPHA ARC ARM AVR C6X LOONGARCH M68K MICROBLAZE MIPS MOXIE MSP430 NIOS2 POWERPC PRU RISCV S390 SH SPARC X86 XTENSA"
 CT_ARCH_SUFFIX=""
 # CT_OMIT_TARGET_VENDOR is not set
 
@@ -257,6 +256,7 @@ CT_BINUTILS_PKG_NAME="binutils"
 CT_BINUTILS_SRC_RELEASE=y
 # CT_BINUTILS_SRC_DEVEL is not set
 CT_BINUTILS_PATCH_ORDER="global"
+# CT_BINUTILS_V_2_39 is not set
 CT_BINUTILS_V_2_38=y
 # CT_BINUTILS_V_2_37 is not set
 # CT_BINUTILS_V_2_36 is not set
@@ -276,6 +276,8 @@ CT_BINUTILS_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_BINUTILS_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
 CT_BINUTILS_ARCHIVE_FORMATS=".tar.xz .tar.bz2 .tar.gz"
 CT_BINUTILS_SIGNATURE_FORMAT="packed/.sig"
+CT_BINUTILS_2_39_or_older=y
+CT_BINUTILS_older_than_2_39=y
 CT_BINUTILS_later_than_2_30=y
 CT_BINUTILS_2_30_or_later=y
 CT_BINUTILS_later_than_2_27=y
@@ -370,7 +372,7 @@ CT_LIBC_NEWLIB_ENABLE_TARGET_OPTSPACE=y
 # CT_LIBC_NEWLIB_NANO_MALLOC is not set
 # CT_LIBC_NEWLIB_NANO_FORMATTED_IO is not set
 CT_LIBC_NEWLIB_EXTRA_CONFIG_ARRAY=""
-CT_ALL_LIBC_CHOICES="AVR_LIBC BIONIC GLIBC MINGW_W64 MOXIEBOX MUSL NEWLIB NONE UCLIBC_NG"
+CT_ALL_LIBC_CHOICES="AVR_LIBC GLIBC MINGW_W64 MOXIEBOX MUSL NEWLIB NONE UCLIBC_NG"
 CT_LIBC_SUPPORT_THREADS_NONE=y
 CT_LIBC_PROVIDES_CXA_ATEXIT=y
 
@@ -387,6 +389,7 @@ CT_CC_CORE_NEEDED=y
 CT_CC_SUPPORT_CXX=y
 CT_CC_SUPPORT_FORTRAN=y
 CT_CC_SUPPORT_ADA=y
+CT_CC_SUPPORT_D=y
 CT_CC_SUPPORT_OBJC=y
 CT_CC_SUPPORT_OBJCXX=y
 CT_CC_SUPPORT_GOLANG=y
@@ -401,12 +404,14 @@ CT_CC_GCC_SHOW=y
 CT_CC_GCC_PKG_KSYM="GCC"
 CT_GCC_DIR_NAME="gcc"
 CT_GCC_USE_GNU=y
+# CT_GCC_USE_ORACLE is not set
 CT_GCC_USE="GCC"
 CT_GCC_PKG_NAME="gcc"
 CT_GCC_SRC_RELEASE=y
 # CT_GCC_SRC_DEVEL is not set
 CT_GCC_PATCH_ORDER="global"
-CT_GCC_V_11=y
+CT_GCC_V_12=y
+# CT_GCC_V_11 is not set
 # CT_GCC_V_10 is not set
 # CT_GCC_V_9 is not set
 # CT_GCC_V_8 is not set
@@ -414,12 +419,14 @@ CT_GCC_V_11=y
 # CT_GCC_V_6 is not set
 # CT_GCC_V_5 is not set
 # CT_GCC_V_4_9 is not set
-CT_GCC_VERSION="11.2.0"
+CT_GCC_VERSION="12.2.0"
 CT_GCC_MIRRORS="$(CT_Mirrors GNU gcc/gcc-${CT_GCC_VERSION}) $(CT_Mirrors sourceware gcc/releases/gcc-${CT_GCC_VERSION})"
 CT_GCC_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_GCC_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
 CT_GCC_ARCHIVE_FORMATS=".tar.xz .tar.gz"
 CT_GCC_SIGNATURE_FORMAT=""
+CT_GCC_later_than_12=y
+CT_GCC_12_or_later=y
 CT_GCC_later_than_11=y
 CT_GCC_11_or_later=y
 CT_GCC_later_than_10=y
@@ -452,10 +459,12 @@ CT_CC_GCC_CONFIG_TLS=m
 #
 # Settings for libraries running on target
 #
+CT_CC_GCC_ENABLE_DEFAULT_PIE=y
 CT_CC_GCC_ENABLE_TARGET_OPTSPACE=y
 # CT_CC_GCC_LIBMUDFLAP is not set
 # CT_CC_GCC_LIBSSP is not set
 # CT_CC_GCC_LIBQUADMATH is not set
+# CT_CC_GCC_LIBSTDCXX_VERBOSE is not set
 
 #
 # Misc. obscure options.
@@ -480,7 +489,7 @@ CT_ALL_CC_CHOICES="GCC"
 #
 # Additional supported languages:
 #
-# CT_CC_LANG_CXX is not set
+CT_CC_LANG_CXX=y
 # CT_CC_LANG_FORTRAN is not set
 # end of C compiler
 
@@ -494,6 +503,7 @@ CT_GDB_PKG_NAME="gdb"
 CT_GDB_SRC_RELEASE=y
 # CT_GDB_SRC_DEVEL is not set
 CT_GDB_PATCH_ORDER="global"
+# CT_GDB_V_12 is not set
 CT_GDB_V_11=y
 # CT_GDB_V_10 is not set
 # CT_GDB_V_9 is not set
@@ -504,18 +514,14 @@ CT_GDB_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_GDB_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
 CT_GDB_ARCHIVE_FORMATS=".tar.xz .tar.gz"
 CT_GDB_SIGNATURE_FORMAT=""
+CT_GDB_12_or_older=y
+CT_GDB_older_than_12=y
 CT_GDB_later_than_11=y
 CT_GDB_11_or_later=y
 CT_GDB_later_than_10=y
 CT_GDB_10_or_later=y
 CT_GDB_later_than_8_3=y
 CT_GDB_8_3_or_later=y
-CT_GDB_later_than_8_0=y
-CT_GDB_8_0_or_later=y
-CT_GDB_later_than_7_12=y
-CT_GDB_7_12_or_later=y
-CT_GDB_later_than_7_11=y
-CT_GDB_7_11_or_later=y
 CT_GDB_CROSS=y
 CT_GDB_CROSS_STATIC=y
 # CT_GDB_CROSS_SIM is not set
