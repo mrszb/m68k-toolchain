@@ -256,8 +256,8 @@ CT_BINUTILS_PKG_NAME="binutils"
 CT_BINUTILS_SRC_RELEASE=y
 # CT_BINUTILS_SRC_DEVEL is not set
 CT_BINUTILS_PATCH_ORDER="global"
-# CT_BINUTILS_V_2_39 is not set
-CT_BINUTILS_V_2_38=y
+CT_BINUTILS_V_2_39=y
+# CT_BINUTILS_V_2_38 is not set
 # CT_BINUTILS_V_2_37 is not set
 # CT_BINUTILS_V_2_36 is not set
 # CT_BINUTILS_V_2_35 is not set
@@ -270,14 +270,14 @@ CT_BINUTILS_V_2_38=y
 # CT_BINUTILS_V_2_28 is not set
 # CT_BINUTILS_V_2_27 is not set
 # CT_BINUTILS_V_2_26 is not set
-CT_BINUTILS_VERSION="2.38"
+CT_BINUTILS_VERSION="2.39"
 CT_BINUTILS_MIRRORS="$(CT_Mirrors GNU binutils) $(CT_Mirrors sourceware binutils/releases)"
 CT_BINUTILS_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_BINUTILS_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
 CT_BINUTILS_ARCHIVE_FORMATS=".tar.xz .tar.bz2 .tar.gz"
 CT_BINUTILS_SIGNATURE_FORMAT="packed/.sig"
+CT_BINUTILS_2_39_or_later=y
 CT_BINUTILS_2_39_or_older=y
-CT_BINUTILS_older_than_2_39=y
 CT_BINUTILS_later_than_2_30=y
 CT_BINUTILS_2_30_or_later=y
 CT_BINUTILS_later_than_2_27=y
@@ -503,19 +503,19 @@ CT_GDB_PKG_NAME="gdb"
 CT_GDB_SRC_RELEASE=y
 # CT_GDB_SRC_DEVEL is not set
 CT_GDB_PATCH_ORDER="global"
-# CT_GDB_V_12 is not set
-CT_GDB_V_11=y
+CT_GDB_V_12=y
+# CT_GDB_V_11 is not set
 # CT_GDB_V_10 is not set
 # CT_GDB_V_9 is not set
 # CT_GDB_V_8_3 is not set
-CT_GDB_VERSION="11.2"
+CT_GDB_VERSION="12.1"
 CT_GDB_MIRRORS="$(CT_Mirrors GNU gdb) $(CT_Mirrors sourceware gdb/releases)"
 CT_GDB_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_GDB_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
 CT_GDB_ARCHIVE_FORMATS=".tar.xz .tar.gz"
 CT_GDB_SIGNATURE_FORMAT=""
-CT_GDB_12_or_older=y
-CT_GDB_older_than_12=y
+CT_GDB_later_than_12=y
+CT_GDB_12_or_later=y
 CT_GDB_later_than_11=y
 CT_GDB_11_or_later=y
 CT_GDB_later_than_10=y
