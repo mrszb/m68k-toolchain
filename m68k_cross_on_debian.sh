@@ -6,14 +6,36 @@ CROSSTOOL_BUILD_DIR=".crosstoolbuild"
 CROSSTOOL_DIR=$(realpath ".crosstool")
 CROSSCHAIN_BUILD_DIR=".crosschainbuild"
 
+
+get_packager_used()
+{
+    PKG_MANAGER="none"
+
+    if [ -x "$(command -v apt-get)" ]; then 
+        PKG_MANAGER="apt-get"
+    elif [ -x "$(command -v dnf)" ]; then
+        PKG_MANAGER="dnf"
+    fi 
+
+    echo $PKG_MANAGER
+}
+
 need_package()
 {
     REQUIRED_PKG=$1
-    PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
+    PKG_MANAGER=$(get_packager_used)
+
+    if [ "$PKG_MANAGER" = "apt-get" ]; then
+        PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
+
+    elif [ "$PKG_MANAGER" = "dnf" ]; then
+        PKG_OK=$(dnf list installed "$REQUIRED_PKG" | grep "$REQUIRED_PKG")
+    fi 
+
     echo Checking for $REQUIRED_PKG: $PKG_OK
     if [ "" = "$PKG_OK" ]; then
         #echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
-        sudo apt-get --yes install $REQUIRED_PKG
+        sudo $PKG_MANAGER -y install $REQUIRED_PKG
     fi
 }
 
@@ -22,33 +44,29 @@ prepare()
     # needed
     # INFO  :: Master packages: android-ndk autoconf automake avr-libc binutils bison cloog dtc duma elf2flt expat gcc gdb gettext glibc glibc-ports gmp gnuprumcu isl libelf libiconv libtool linux ltrace m4 make mingw-w64 moxiebox mpc mpfr musl ncurses newlib-nano newlib picolibc strace uClibc zlib
 
-    declare -a arr=("autoconf" 
-                "automake" "libncurses-dev"
-                "python-devel"
-     #           "libstdc++"
-                )
+    tools=("autoconf" "automake" "flex" "texinfo" "help2man" "unzip" "bzip2" "make" "help2man" "patch" )
+    libs=("libncurses-dev" "libstdc++" "python-devel")
+    apt_packages=("xz-utils" "libtool-bin")
+    dnf_packages=("libtool" "ncurses")
 
-    for i in "${arr[@]}"
+    if [ $(get_packager_used) = "dnf" ]; then 
+        packages=(${tools[@]} ${dnf_packages[@]})
+
+    elif [ $(get_packager_used) = "apt-get" ]; then  
+        packages=(${tools[@]} ${apt_packages[@]})
+    fi
+
+    echo ${arr[@]}
+    #exit
+
+    for i in "${packages[@]}"
     do
+        echo $i
         need_package $i
     done
 
-    need_package help2man
-    need_package libtool-bin
-    #need_package libtool
-    need_package flex
-    need_package texinfo
-    need_package bison
-
-    need_package flex
-    need_package texinfo
-    need_package flex
-    need_package unzip
-    need_package bzip2
-    need_package make
-    need_package xz-utils
-    need_package patch
-    need_package gawk
+    #need_package libtool-bin
+    #need_package gawk
     #need_package ncurses
 }
 
