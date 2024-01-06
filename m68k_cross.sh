@@ -58,9 +58,7 @@ prepare()
     need_package xz-utils
     need_package patch
     need_package gawk
-    #need_package ncurses
-}
-
+    #need_pack
 build_crosstool()
 {
     prepare

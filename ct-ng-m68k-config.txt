@@ -1,11 +1,10 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# crosstool-NG 1.26.0.18_cf6b174 Configuration
+# crosstool-NG 1.26.0.40_6cf65db Configuration
 #
 CT_CONFIGURE_has_cxx11=y
 CT_CONFIGURE_has_wget=y
 CT_CONFIGURE_has_curl=y
-CT_CONFIGURE_has_rsync=y
 CT_CONFIGURE_has_make_3_81_or_newer=y
 CT_CONFIGURE_has_make_4_0_or_newer=y
 CT_CONFIGURE_has_make_4_4_or_newer=y
@@ -26,7 +25,7 @@ CT_CONFIGURE_has_sha1sum=y
 CT_CONFIGURE_has_sha256sum=y
 CT_CONFIGURE_has_sha512sum=y
 CT_CONFIGURE_has_install_with_strip_program=y
-CT_VERSION="1.26.0.18_cf6b174"
+CT_VERSION="1.26.0.40_6cf65db"
 CT_VCHECK=""
 CT_CONFIG_VERSION_ENV="4"
 CT_CONFIG_VERSION_CURRENT="4"
@@ -151,7 +150,7 @@ CT_ARCH_M68K_SHOW=y
 # Options for m68k
 #
 CT_ARCH_M68K_PKG_KSYM=""
-CT_ALL_ARCH_CHOICES="ALPHA ARC ARM AVR BPF C6X LOONGARCH M68K MICROBLAZE MIPS MOXIE MSP430 NIOS2 POWERPC PRU RISCV S390 SH SPARC X86 XTENSA"
+CT_ALL_ARCH_CHOICES="ALPHA ARC ARM AVR BPF C6X LOONGARCH M68K MICROBLAZE MIPS MOXIE MSP430 NIOS2 PARISC POWERPC PRU RISCV S390 SH SPARC X86 XTENSA"
 CT_ARCH_SUFFIX=""
 # CT_OMIT_TARGET_VENDOR is not set
 
@@ -256,7 +255,8 @@ CT_BINUTILS_PKG_NAME="binutils"
 CT_BINUTILS_SRC_RELEASE=y
 # CT_BINUTILS_SRC_DEVEL is not set
 CT_BINUTILS_PATCH_ORDER="global"
-CT_BINUTILS_V_2_40=y
+CT_BINUTILS_V_2_41=y
+# CT_BINUTILS_V_2_40 is not set
 # CT_BINUTILS_V_2_39 is not set
 # CT_BINUTILS_V_2_38 is not set
 # CT_BINUTILS_V_2_37 is not set
@@ -271,7 +271,7 @@ CT_BINUTILS_V_2_40=y
 # CT_BINUTILS_V_2_28 is not set
 # CT_BINUTILS_V_2_27 is not set
 # CT_BINUTILS_V_2_26 is not set
-CT_BINUTILS_VERSION="2.40"
+CT_BINUTILS_VERSION="2.41"
 CT_BINUTILS_MIRRORS="$(CT_Mirrors GNU binutils) $(CT_Mirrors sourceware binutils/releases)"
 CT_BINUTILS_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_BINUTILS_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
@@ -578,6 +578,7 @@ CT_ZLIB_PKG_NAME="zlib"
 CT_ZLIB_SRC_RELEASE=y
 # CT_ZLIB_SRC_DEVEL is not set
 CT_ZLIB_PATCH_ORDER="global"
+# CT_ZLIB_V_1_3 is not set
 CT_ZLIB_V_1_2_13=y
 CT_ZLIB_VERSION="1.2.13"
 CT_ZLIB_MIRRORS="https://github.com/madler/zlib/releases/download/v${CT_ZLIB_VERSION} https://www.zlib.net/"
